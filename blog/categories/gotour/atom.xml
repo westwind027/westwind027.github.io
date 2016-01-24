@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gotour | Westwind027的个人学习博客]]></title>
+  <link href="http://westwind027.ml/blog/categories/gotour/atom.xml" rel="self"/>
+  <link href="http://westwind027.ml/"/>
+  <updated>2016-01-24T15:20:07+08:00</updated>
+  <id>http://westwind027.ml/</id>
+  <author>
+    <name><![CDATA[westwind027]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Go Tour习题实作-循环和函数]]></title>
+    <link href="http://westwind027.ml/blog/2016/01/18/11/"/>
+    <updated>2016-01-18T20:06:42+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/01/18/11</id>
+    <content type="html"><![CDATA[<pre><code>package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func Sqrt(x float64) float64 {
+    v:=1.0
+    r:=10
+    for i:=0;i&lt;r;i++{
+        v=v-(v*v-x)/(2*v)
+    }
+    return v
+}
+
+func main() {
+    fmt.Println(Sqrt(2))
+    fmt.Println(math.Sqrt(2))
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Go Tour习题实作-slice]]></title>
+    <link href="http://westwind027.ml/blog/2016/01/18/10/"/>
+    <updated>2016-01-18T19:41:24+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/01/18/10</id>
+    <content type="html"><![CDATA[<pre><code>package main
+
+import "golang.org/x/tour/pic"
+
+func Pic(dx, dy int) [][]uint8 {
+    v:=make([][]uint8,dy)
+    for i:= range v{
+        v[i] = make([]uint8,dx)
+        for j:= range v[i]{
+            v[i][j] = uint8((i^j)/2)
+        }
+    }
+    return v
+}
+
+func main() {
+    pic.Show(Pic)
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Go Tour习题实作-map]]></title>
+    <link href="http://westwind027.ml/blog/2016/01/18/9/"/>
+    <updated>2016-01-18T19:41:18+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/01/18/9</id>
+    <content type="html"><![CDATA[<pre><code>package main
+
+import (
+    "golang.org/x/tour/wc"
+    "strings"
+)
+
+func WordCount(s string) map[string]int {
+    r:=make(map[string]int)
+    for _,v:=range strings.Fields(s){
+        r[v]+=1
+    }
+    return r
+}
+
+func main() {
+    wc.Test(WordCount)
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Go Tour习题实作-斐波纳契闭包]]></title>
+    <link href="http://westwind027.ml/blog/2016/01/18/8/"/>
+    <updated>2016-01-18T19:41:16+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/01/18/8</id>
+    <content type="html"><![CDATA[<pre><code>package main
+
+import "fmt"
+
+// fibonacci 函数会返回一个返回 int 的函数。
+func fibonacci() func() int {
+    f1:=1
+    f2:=0
+    return func() int{
+        f1,f2 =f2,f1+f2
+        return f1
+    }
+}
+
+func main() {
+    f := fibonacci()
+    for i := 0; i &lt; 10; i++ {
+        fmt.Println(f())
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Go Tour习题实作-Stringers]]></title>
+    <link href="http://westwind027.ml/blog/2016/01/18/7/"/>
+    <updated>2016-01-18T19:41:13+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/01/18/7</id>
+    <content type="html"><![CDATA[<pre><code>package main
+
+import "fmt"
+
+type IPAddr [4]byte
+
+// TODO: Add a "String() string" method to IPAddr.
+func (p *IPAddr) String() string{
+    return fmt.Sprintf("%v.%v.%v.%v",p[0],p[1],p[2],p[3])
+}
+
+func main() {
+    addrs := map[string]IPAddr{
+        "loopback":  {127, 0, 0, 1},
+        "googleDNS": {8, 8, 8, 8},
+    }
+    for n, a := range addrs {
+        fmt.Printf("%v: %v\n", n, &amp;a)
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OpenResty学习-Lua部分 - Westwind027的个人学习博客</title>
+  <meta name="author" content="westwind027">
+
+  
+  <meta name="description" content="数据类型：数值型，字符串型，函数型，表型，用户自定义型（OpenResty编程可能暂时没用到）
+表：统一了数组、散列表。 通过元表实现了面向对象的功能。
+函数：第一类对象。（可以赋值给表量、作为参数传递、以及作为返回值接收）
+全动态函数调用： 1）调用的函数未知 2）函数的参数类型和数目也未知 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://westwind027.ml/blog/2016/01/24/12/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Westwind027的个人学习博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-72538682-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'http://droidyue-tools.qiniudn.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Westwind027的个人学习博客</a></h1>
+  
+    <h2>Come、Study、Conquer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="westwind027.ml">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OpenResty学习-Lua部分</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-24T10:14:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:14 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ol>
+<li><p>数据类型：数值型，字符串型，函数型，表型，用户自定义型（OpenResty编程可能暂时没用到）</p></li>
+<li><p>表：统一了数组、散列表。 通过元表实现了面向对象的功能。</p></li>
+<li><p>函数：第一类对象。（可以赋值给表量、作为参数传递、以及作为返回值接收）</p></li>
+<li><p>全动态函数调用：
+ 1）调用的函数未知
+ 2）函数的参数类型和数目也未知</p></li>
+</ol>
+
+
+<blockquote></blockquote>
+
+<pre><code>local function doAction(method, ...)
+   local args = {...} or {}
+   method(unpack(args, 1, table.maxn(args)))
+end
+</code></pre>
+
+<ol>
+<li>元表：表现行为类似于C++语言中的操作符重载</li>
+</ol>
+
+
+<blockquote></blockquote>
+
+<pre><code>setmetatable(table,metatable):此方法用于为一个表设置元表。
+getmetatable(table)：此方法用于获取表的元表对象
+
+——index     在表中查找键不存在时转而在元表中查找该键的功能
+__call      使得表能调用
+__tostring  实现自定义的字符串装换
+__metatable 保护元表
+</code></pre>
+
+<ol>
+<li>面向对象：数据放表，方法放元表。使用语法糖调用方法</li>
+</ol>
+
+
+<blockquote></blockquote>
+
+<pre><code>obj:x()等价于obj.x(obj)
+</code></pre>
+
+<ol>
+<li><p>继承：扩展数据部分和方法，放在表里</p></li>
+<li><p>成员私有性：通过工厂方法对外提供的闭包来暴露对外接口</p></li>
+</ol>
+
+
+<blockquote><p>注意事项：</p></blockquote>
+
+<ul>
+<li><p><code>不要在 lua 的 table 中使用 nil 值，如果一个元素要删除，直接 remove，不要用 nil 去代替</code></p></li>
+<li><p><code>不要使用#操作符来计算包含nil的数组长度</code></p></li>
+<li><p><code>抵制使用module()函数来定义Lua模块，使用定义对象的方式来组织模块</code></p></li>
+</ul>
+
+
+<blockquote><p>建议：</p></blockquote>
+
+<ul>
+<li><p><code>时间：使用ngx_lua模块提供的带缓存的时间接口，如NGX.TODAY, NGX.TIME, NGX.UTCTIME, NGX.LOCALTIME, NGX.NOW, NGX.HTTP_TIME， 以及 NGX.COOKIE_TIME</code></p></li>
+<li><p><code>正则：使用ngx.re中的正则表达式，可以通过参数缓存编译过后的Pattern,且实现的是标准的 POSIX 规范</code></p></li>
+<li><p><code>函数：建议将函数的定义都放置在自己的Lua module中，再在content_by_lua_file指向的.lua文件中调用它</code></p></li>
+<li><p><code>表的非空判断：</code></p></li>
+</ul>
+
+
+<blockquote></blockquote>
+
+<pre><code>function isTableEmpty(t)
+    if t == nil or _G.next(t) == nil then
+        return true
+    else
+        return false
+    end
+end
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">westwind027</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-01-24T10:14:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:14 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/lua/'>lua</a>, <a class='category' href='/blog/categories/openresty/'>openresty</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share?uid=2081780" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2081780" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2081780"></script>
+<!-- UY END -->
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/01/18/11/" title="Previous Post: Go Tour习题实作-循环和函数">&laquo; Go Tour习题实作-循环和函数</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/01/24/12/">OpenResty学习-Lua部分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/18/11/">Go Tour习题实作-循环和函数</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/18/10/">Go Tour习题实作-slice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/18/9/">Go Tour习题实作-map</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/18/8/">Go Tour习题实作-斐波纳契闭包</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - westwind027 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
