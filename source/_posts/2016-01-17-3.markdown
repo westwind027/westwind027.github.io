@@ -1,0 +1,38 @@
+---
+layout: post
+title: "Go Tour习题实作-HTTP处理"
+date: 2016-01-17 18:13:30 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import (
+		"log"
+		"fmt"
+		"net/http"
+	)
+	
+	type String string
+	
+	type Struct struct {
+	    Greeting string
+	    Punct    string
+	    Who      string
+	}
+	
+	func (p String)ServeHTTP(w http.ResponseWriter,
+							  r *http.Request){
+		fmt.Fprint(w, p)
+	}
+	
+	func (p *Struct)ServeHTTP(w http.ResponseWriter,
+							  r *http.Request){
+		fmt.Fprint(w, p.Greeting,p.Punct,p.Who)
+	}
+	
+	func main() {
+		http.Handle("/string", String("I'm a frayed knot."))
+		http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
+		log.Fatal(http.ListenAndServe("localhost:4001", nil))
+	}

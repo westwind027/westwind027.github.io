@@ -1,0 +1,45 @@
+---
+layout: post
+title: "Go Tour习题实作-错误"
+date: 2016-01-18 19:41:09 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import (
+		"fmt"
+	)
+	
+	type ErrNegativeSqrt float64
+	
+	func (e ErrNegativeSqrt) Error() string{
+		return fmt.Sprintf("%v:%v","Cannot Sqrt negative number",float64(e))
+	}
+	
+	func err(x float64) error{
+		if x>0 {return nil}
+		return ErrNegativeSqrt(x)
+	}
+	
+	func Sqrt(x float64) (float64, error) {
+		if x<0 {
+			return x,err(x)
+		}
+		
+		v:=1.0
+		r:=10
+		for i:=0;i<r;i++{
+			v=v-(v*v-x)/(2*v)
+		}
+		return v,err(x)
+	   
+	}
+	
+	
+	
+	func main() {
+		fmt.Println(Sqrt(2))
+		fmt.Println(Sqrt(-2))
+	}
+> 注意类型转换，避免出现死循环

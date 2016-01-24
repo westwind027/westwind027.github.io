@@ -1,0 +1,24 @@
+---
+layout: post
+title: "Go Tour习题实作-A Reader"
+date: 2016-01-17 18:13:35 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import "golang.org/x/tour/reader"
+	
+	type MyReader struct{
+	}
+	
+	// TODO: Add a Read([]byte) (int, error) method to MyReader.
+	func (p MyReader) Read(c []byte) (int, error){
+		c[0]='A'
+		return 1,nil
+	}
+	
+	func main() {
+		reader.Validate(MyReader{})
+	}
+> Read使用的参数是关键

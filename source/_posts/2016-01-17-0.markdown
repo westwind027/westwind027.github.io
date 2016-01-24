@@ -1,0 +1,154 @@
+---
+layout: post
+title: "Go Tour习题实作-爬虫"
+date: 2016-01-17 17:02:34 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import (
+		"fmt"
+		"sync"
+	)
+	
+	
+	var quit chan int = make(chan int)
+	var p *Mymap= &Mymap{m: make(map[string]bool)}
+	type Mymap struct{
+		m map[string]bool
+	  	ins int
+		mux sync.Mutex
+	}
+	
+	func (p *Mymap)Check(s string)bool{
+		p.mux.Lock()
+		defer p.mux.Unlock()
+		
+		if p.m[s]{
+			return false
+		}else{
+			p.m[s]=true
+			p.ins+=1
+			fmt.Printf("Check_ins: %v\n", p.ins)
+			return true
+	  	}
+	}
+	
+	func (p *Mymap)Dec(){
+		p.mux.Lock()
+		defer p.mux.Unlock()
+	  	p.ins-=1
+		fmt.Printf("Dec_ins: %v\n", p.ins)
+	}
+	
+	func (p *Mymap)Quit()bool{
+		p.mux.Lock()
+		defer p.mux.Unlock()
+		//fmt.Printf("ins: %v\n", p.ins)
+		if p.ins==0 {
+			return true
+		}else{
+			return false
+		}
+	}
+	
+	type Fetcher interface {
+		// Fetch 返回 URL 的 body 内容，并且将在这个页面上找到的 URL 放到一个 slice 中。
+		Fetch(url string) (body string, urls []string, err error)
+	}
+	
+	// Crawl 使用 fetcher 从某个 URL 开始递归的爬取页面，直到达到最大深度。
+	func Crawl(url string, depth int, fetcher Fetcher) {
+		// TODO: 并行的抓取 URL。
+		// TODO: 不重复抓取页面。
+	   
+	  if depth <= 0 {
+	    p.Dec()
+	    return
+	  }
+	  if p.Check(url){
+	    go func(){
+	      body, urls, err := fetcher.Fetch(url)
+	      if err != nil {
+	        fmt.Println(err)
+	        p.Dec()
+	        if p.Quit() {
+	          quit<-0
+	        }
+	        return
+	      }else{
+	        fmt.Printf("found: %s %q\n", url, body)
+	        for _, u := range urls {
+	          Crawl(u, depth-1, fetcher)
+	        }
+	
+	        p.Dec()
+	        if p.Quit() {
+	          quit<-0
+	        }
+	      } 
+	    }()
+	  }
+	  return
+	}
+	
+	func main() {
+	  Crawl("http://golang.org/", 4, fetcher)
+	  <-quit
+	}
+	
+	// fakeFetcher 是返回若干结果的 Fetcher。
+	type fakeFetcher map[string]*fakeResult
+	
+	type fakeResult struct {
+		body string
+		urls []string
+	}
+	
+	func (f fakeFetcher) Fetch(url string) (string, []string, error) {
+		if res, ok := f[url]; ok {
+			return res.body, res.urls, nil
+		}
+		return "", nil, fmt.Errorf("not found: %s", url)
+	}
+	
+	// fetcher 是填充后的 fakeFetcher。
+	var fetcher = fakeFetcher{
+		"http://golang.org/": &fakeResult{
+			"The Go Programming Language",
+			[]string{
+				"http://golang.org/pkg/",
+				"http://golang.org/cmd/",
+			},
+		},
+		"http://golang.org/pkg/": &fakeResult{
+			"Packages",
+			[]string{
+				"http://golang.org/",
+				"http://golang.org/cmd/",
+				"http://golang.org/pkg/fmt/",
+				"http://golang.org/pkg/os/",
+			},
+		},
+		"http://golang.org/pkg/fmt/": &fakeResult{
+			"Package fmt",
+			[]string{
+				"http://golang.org/",
+				"http://golang.org/pkg/",
+			},
+		},
+		"http://golang.org/pkg/os/": &fakeResult{
+			"Package os",
+			[]string{
+				"http://golang.org/",
+				"http://golang.org/pkg/",
+			},
+		},
+	}
+
+
+> 
+> 本节主要难点在并发位置的选取和如何等待所有任务完成
+> 
+> 避免重复这里使用了一个MAP来完成

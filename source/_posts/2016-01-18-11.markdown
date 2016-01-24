@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Go Tour习题实作-循环和函数"
+date: 2016-01-18 20:06:42 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import (
+		"fmt"
+		"math"
+	)
+	
+	func Sqrt(x float64) float64 {
+		v:=1.0
+		r:=10
+		for i:=0;i<r;i++{
+			v=v-(v*v-x)/(2*v)
+		}
+		return v
+	}
+	
+	func main() {
+		fmt.Println(Sqrt(2))
+		fmt.Println(math.Sqrt(2))
+	}

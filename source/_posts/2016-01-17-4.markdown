@@ -1,0 +1,42 @@
+---
+layout: post
+title: "Go Tour习题实作-ROT13"
+date: 2016-01-17 18:13:31 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import (
+		"io"
+		"os"
+		"strings"
+	)
+	
+	type rot13Reader struct {
+		r io.Reader
+	}
+	
+	func (p *rot13Reader)Read(c []byte)(i int,e error){
+		
+		i,e = p.r.Read(c)
+		for i:=range c {
+			switch {
+			case c[i]<'N':c[i]+=13
+			case c[i]<'a':c[i]-=13
+			case c[i]<'n':c[i]+=13
+			case c[i]<='z':c[i]-=13
+			default:
+			}
+		}
+		return i,e
+	}
+	
+	
+	
+	func main() {
+		s := strings.NewReader("Lbh penpxrq gur pbqr!")
+		r := rot13Reader{s}
+		io.Copy(os.Stdout, &r)
+	}
+> 注意区分大小写就行，写完发现Read定义很容易扩展

@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Go Tour习题实作-斐波纳契闭包"
+date: 2016-01-18 19:41:16 +0800
+comments: true
+categories: gotour
+---
+	package main
+	
+	import "fmt"
+	
+	// fibonacci 函数会返回一个返回 int 的函数。
+	func fibonacci() func() int {
+		f1:=1
+		f2:=0
+		return func() int{
+			f1,f2 =f2,f1+f2
+			return f1
+		}
+	}
+	
+	func main() {
+		f := fibonacci()
+		for i := 0; i < 10; i++ {
+			fmt.Println(f())
+		}
+	}
