@@ -4,7 +4,7 @@
   <title><![CDATA[Westwind027的个人学习博客]]></title>
   <link href="http://westwind027.ml/atom.xml" rel="self"/>
   <link href="http://westwind027.ml/"/>
-  <updated>2016-05-22T11:31:05+08:00</updated>
+  <updated>2016-05-22T11:34:12+08:00</updated>
   <id>http://westwind027.ml/</id>
   <author>
     <name><![CDATA[westwind027]]></name>
@@ -14,20 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[14]]></title>
+    <title type="html"><![CDATA[JAVASCRIPT基本知识]]></title>
     <link href="http://westwind027.ml/blog/2016/05/22/14/"/>
-    <updated>2016-05-22T00:00:00+08:00</updated>
+    <updated>2016-05-22T11:27:01+08:00</updated>
     <id>http://westwind027.ml/blog/2016/05/22/14</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>layout: post
-title: &ldquo;JAVASCRIPT基本知识&rdquo;
-date: 2016-05-22 11:27:01 +0800
-comments: true</p>
-
-<h2>categories: FullStack</h2>
-
-<pre><code>客户端库或框架:
+    <content type="html"><![CDATA[<pre><code>客户端库或框架:
 jQuery
 AngularJS
 Bootstrap
