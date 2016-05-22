@@ -9,11 +9,12 @@
   <meta name="author" content="westwind027">
 
   
-  <meta name="description" content="基本结构
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;meta&gt;&lt;author&gt; &lt;style&gt;&lt;link&gt;&lt;script&gt;&lt;base&gt;
-&lt;body&gt;&lt;h1 &hellip;">
+  <meta name="description" content="layout: post
+title: &ldquo;JAVASCRIPT基本知识&rdquo;
+date: 2016-05-22 11:27:01 +0800
+comments: true categories: FullStack 客户端库或框架:
+jQuery
+AngularJS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,159 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/05/22/14/">14</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-22T00:00:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>layout: post
+title: &ldquo;JAVASCRIPT基本知识&rdquo;
+date: 2016-05-22 11:27:01 +0800
+comments: true</p>
+
+<h2>categories: FullStack</h2>
+
+<pre><code>客户端库或框架:
+jQuery
+AngularJS
+Bootstrap
+</code></pre>
+
+<hr />
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+加载javascript库
+&lt;/head&gt;
+&lt;body&gt;
+放置javascript代码
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>&lt;script&gt;
+代码
+&lt;/script&gt;
+或
+&lt;script src="文件名"&gt;&lt;/script&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>变量使用var定义可以放任何类型
+</code></pre>
+
+<hr />
+
+<pre><code>alert    不带参数
+confirm  是否
+prompt   输出参数
+</code></pre>
+
+<hr />
+
+<pre><code>javascript的注释//或/*comment*/
+javascript的三种类型number,string,boolean,使用typeof函数可以获取变量的类型
+parseInt(),parseFloat(),String()
+</code></pre>
+
+<hr />
+
+<pre><code>函数定义
+function func_name(var)
+{
+  代码
+  return something;(也可以不返回)
+}
+javascript函数可以递归
+</code></pre>
+
+<hr />
+
+<pre><code>debug使用Chrome浏览器的开发者工具
+日志，使用console.log
+</code></pre>
+
+<hr />
+
+<pre><code>if ... else if ... else if ... else
+switch ... case ... default ... break
+while
+do ... while
+</code></pre>
+
+<hr />
+
+<pre><code>局部变量 函数内定义 （重名优先）
+全局变量 非函数内定义
+如果在函数内未申明就赋值，自动变成全局变量
+</code></pre>
+
+<hr />
+
+<pre><code>&amp;&amp;
+||
+！
+同其他语言
+</code></pre>
+
+<hr />
+
+<pre><code>数组
+var pets = ["Dog", "Cat", "Rabbit"];
+var pets = new Array(10);
+array.join(separator);  数组转字符串，分割符连接
+                        数组以0为起始值，默认分割符是,
+array.length            获取数组大小
+array.push(element)     往数组尾插入数据
+array.pop()             从数组尾删除数据
+array.unshift(element)  往数组头插入数据
+array.shift()           从数组头删除数据
+array.concat()          合并数组
+</code></pre>
+
+<hr />
+
+<pre><code>Math.random()  [0,1)  
+Math.floor()   向下取整
+isNaN()        不是数字返回真
+</code></pre>
+
+<hr />
+
+<pre><code>JavaScript 练习材料
+http://www.ugrad.cs.ubc.ca/~cs101/2013W2/practice-questions/prejavascriptartlab/
+http://www.billpegram.com/Javascript/javascript_exercises.html
+http://www.jsexercises.com/ 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -794,71 +948,6 @@ func main() {
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/01/17/4/">Go Tour习题实作-ROT13</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-17T18:13:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:13 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>package main
-
-import (
-    "io"
-    "os"
-    "strings"
-)
-
-type rot13Reader struct {
-    r io.Reader
-}
-
-func (p *rot13Reader)Read(c []byte)(i int,e error){
-
-    i,e = p.r.Read(c)
-    for i:=range c {
-        switch {
-        case c[i]&lt;'N':c[i]+=13
-        case c[i]&lt;'a':c[i]-=13
-        case c[i]&lt;'n':c[i]+=13
-        case c[i]&lt;='z':c[i]-=13
-        default:
-        }
-    }
-    return i,e
-}
-
-
-
-func main() {
-    s := strings.NewReader("Lbh penpxrq gur pbqr!")
-    r := rot13Reader{s}
-    io.Copy(os.Stdout, &amp;r)
-}
-</code></pre>
-
-<blockquote><p>注意区分大小写就行，写完发现Read定义很容易扩展</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -899,6 +988,10 @@ func main() {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/05/22/14/">14</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/05/21/13/">HTML基本知识</a>
       </li>
     
@@ -912,10 +1005,6 @@ func main() {
     
       <li class="post">
         <a href="/blog/2016/01/18/10/">Go Tour习题实作-slice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/18/9/">Go Tour习题实作-map</a>
       </li>
     
   </ul>

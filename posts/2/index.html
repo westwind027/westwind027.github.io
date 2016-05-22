@@ -9,9 +9,9 @@
   <meta name="author" content="westwind027">
 
   
-  <meta name="description" content="package main import ( "log" "fmt" "net/http"
-) type String string type Struct struct { Greeting string Punct string Who string
-} func (p String) &hellip;">
+  <meta name="description" content="package main import ( "io" "os" "strings"
+) type rot13Reader struct { r io.Reader
+} func (p *rot13Reader)Read(c []byte)(i int,e error){ i,e = p.r. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/17/4/">Go Tour习题实作-ROT13</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-17T18:13:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:13 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>package main
+
+import (
+    "io"
+    "os"
+    "strings"
+)
+
+type rot13Reader struct {
+    r io.Reader
+}
+
+func (p *rot13Reader)Read(c []byte)(i int,e error){
+
+    i,e = p.r.Read(c)
+    for i:=range c {
+        switch {
+        case c[i]&lt;'N':c[i]+=13
+        case c[i]&lt;'a':c[i]-=13
+        case c[i]&lt;'n':c[i]+=13
+        case c[i]&lt;='z':c[i]-=13
+        default:
+        }
+    }
+    return i,e
+}
+
+
+
+func main() {
+    s := strings.NewReader("Lbh penpxrq gur pbqr!")
+    r := rot13Reader{s}
+    io.Copy(os.Stdout, &amp;r)
+}
+</code></pre>
+
+<blockquote><p>注意区分大小写就行，写完发现Read定义很容易扩展</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -486,6 +551,10 @@ var fetcher = fakeFetcher{
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/05/22/14/">14</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/05/21/13/">HTML基本知识</a>
       </li>
     
@@ -499,10 +568,6 @@ var fetcher = fakeFetcher{
     
       <li class="post">
         <a href="/blog/2016/01/18/10/">Go Tour习题实作-slice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/18/9/">Go Tour习题实作-map</a>
       </li>
     
   </ul>
