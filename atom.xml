@@ -4,7 +4,7 @@
   <title><![CDATA[Westwind027的个人学习博客]]></title>
   <link href="http://westwind027.ml/atom.xml" rel="self"/>
   <link href="http://westwind027.ml/"/>
-  <updated>2016-05-22T11:34:12+08:00</updated>
+  <updated>2016-05-22T11:40:03+08:00</updated>
   <id>http://westwind027.ml/</id>
   <author>
     <name><![CDATA[westwind027]]></name>
@@ -129,11 +129,13 @@ isNaN()        不是数字返回真
 
 <hr />
 
-<pre><code>JavaScript 练习材料
-http://www.ugrad.cs.ubc.ca/~cs101/2013W2/practice-questions/prejavascriptartlab/
-http://www.billpegram.com/Javascript/javascript_exercises.html
-http://www.jsexercises.com/ 
-</code></pre>
+<p> JavaScript 练习材料</p>
+
+<blockquote><p><a href="http://www.ugrad.cs.ubc.ca/~cs101/2013W2/practice-questions/prejavascriptartlab/" title="exercises 1">http://www.ugrad.cs.ubc.ca/~cs101/2013W2/practice-questions/prejavascriptartlab/</a></p>
+
+<p><a href="http://www.billpegram.com/Javascript/javascript_exercises.html" title="exercises 2">http://www.billpegram.com/Javascript/javascript_exercises.html</a></p>
+
+<p> <a href="http://www.jsexercises.com/" title="exercises 3">http://www.jsexercises.com/ </a></p></blockquote>
 ]]></content>
   </entry>
   
