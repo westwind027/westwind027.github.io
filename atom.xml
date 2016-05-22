@@ -4,7 +4,7 @@
   <title><![CDATA[Westwind027的个人学习博客]]></title>
   <link href="http://westwind027.ml/atom.xml" rel="self"/>
   <link href="http://westwind027.ml/"/>
-  <updated>2016-05-22T11:40:03+08:00</updated>
+  <updated>2016-05-22T21:44:32+08:00</updated>
   <id>http://westwind027.ml/</id>
   <author>
     <name><![CDATA[westwind027]]></name>
@@ -14,7 +14,164 @@
 
   
   <entry>
-    <title type="html"><![CDATA[JAVASCRIPT基本知识]]></title>
+    <title type="html"><![CDATA[JavaScript基本知识(续)]]></title>
+    <link href="http://westwind027.ml/blog/2016/05/22/15/"/>
+    <updated>2016-05-22T21:42:01+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/05/22/15</id>
+    <content type="html"><![CDATA[<pre><code>for 
+for ... in  可以获取每个项的索引值或键
+for ... of  可以获取每个项的值 
+</code></pre>
+
+<hr />
+
+<pre><code>break 
+continue
+用法同其他语言
+</code></pre>
+
+<hr />
+
+<pre><code>array高级用法
+array.sort()                                    升序
+array.reverse()                                 反序
+array.sort().reverse()                          降序
+array.indexOf(target,startPosition)             找某一项的值在数组中的序号
+array.lastIndexOf()                             反向寻找某一项的值在数组中的序号
+array.slice(startPosition, endPosition)         指明开始和结束索引获取子数组
+array.splice(position, quantity)                从指定位置删除指定数量的项，并返回删除项
+array.splice(position, 0, element)              从指定位置增加值为element的项
+array.splice(position, quantity, element(s))    从指定位置替换指定数量的项为element(s)的项
+</code></pre>
+
+<hr />
+
+<pre><code>array高级用法（续）
+array.forEach(function)                         对数组中的每个元素调用函数function 
+function yourFunction(element, index, array) {} 函数的格式
+array.map(function)                             对数组中的每个元素调用函数function,返回数组
+</code></pre>
+
+<hr />
+
+<pre><code>DOM(Document Object Model)
+HTML的层次结构 
+文本节点  没有其他标签包裹
+空白节点  只包含空白的文本节点
+例如：
+&lt;body&gt;
+&lt;p&gt;Hello.&lt;/p&gt;
+这种方式&lt;body&gt;和&lt;p&gt;间有空白节点 
+&lt;body&gt;&lt;p&gt;Hello.&lt;/p&gt;
+这种方式&lt;body&gt;和&lt;p&gt;间没有空白节点
+</code></pre>
+
+<hr />
+
+<pre><code>parentNode                              上级
+childNodes[], firstChild, lastChild     下级，document.childNodes[0]是body的第一个下级
+previousSibling, nextSibling            平级
+</code></pre>
+
+<hr />
+
+<pre><code>event.target 获取事件对应的节点
+</code></pre>
+
+<hr />
+
+<pre><code>getElementsByTagName()                  根据标签名定位，如果有多个，不方便
+getElementById()                        根据ID定位
+setAttribute()
+例如：
+the_node.setAttribute("style", "color:red");
+</code></pre>
+
+<hr />
+
+<pre><code>createElement(), createTextNode()       先创建节点
+insertBefore(), appendChild()           再加入到指定为位置
+例如：
+newItem = document.createElement("hr");
+destParent = document.getElementsByTagName("body")[0];
+destParent.insertBefore(newItem, destParent.firstChild);
+</code></pre>
+
+<hr />
+
+<pre><code>removeChild()                           删除节点
+步骤：
+1.找到节点
+2.告诉父节点，删除该子节点
+例如：
+删除所有子节点
+var theNode = document.getElementById("theBody");
+while (theNode.firstChild) // While there is a child
+  theNode.removeChild(theNode.firstChild);
+
+the_node.cloneNode()                    拷贝一个节点
+the_node.cloneNode(true)                拷贝分支
+dest.appendChild(the_node)
+</code></pre>
+
+<hr />
+
+<pre><code>鼠标事件：
+onclick                                 鼠标点到一个对象时触发(=onmousedown+onmouseup)
+onmousedown                             鼠标按下时触发
+onmouseup                               鼠标弹起时触发
+onmouseover                             鼠标移到对象上方时触发
+onmouseout                              鼠标移出对象时触发
+例如：
+onmouseover="change_colour('red');"
+</code></pre>
+
+<hr />
+
+<pre><code>定时器事件：
+setTimeout(func,time);                  设置定时器,执行一次
+clearTimeout(the_timer);               清除定时器
+setInterval(func,time);                 设置定时器,重复执行
+clearInterval(the_timer);              清除定时器
+例如
+var the_timer;
+the_timer=setTimeout(do_something, 1000);  //时间单位毫秒
+</code></pre>
+
+<hr />
+
+<pre><code>设置事件：
+addEventListener()
+removeEventListener()
+使用JS脚本设置处理函数
+window.onload = do_something;
+或者
+window.addEventListener("load", do_something);
+如果对事件增加了多个处理函数，处理函数按增加的顺序依次执行
+</code></pre>
+
+<hr />
+
+<pre><code>将函数传给变量
+var functionTwo = function() {
+...code...
+}
+var functionTwo = function thisFunc(){
+...code...
+}
+将函数传给函数                           做函数参数传递
+返回函数
+</code></pre>
+
+<hr />
+
+<pre><code>&lt;meta http­equiv="refresh" content="1"&gt;  可以让浏览器每隔1秒重载网页
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript基本知识]]></title>
     <link href="http://westwind027.ml/blog/2016/05/22/14/"/>
     <updated>2016-05-22T11:27:01+08:00</updated>
     <id>http://westwind027.ml/blog/2016/05/22/14</id>
@@ -140,7 +297,7 @@ isNaN()        不是数字返回真
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[HTML基本知识]]></title>
+    <title type="html"><![CDATA[Html基本知识]]></title>
     <link href="http://westwind027.ml/blog/2016/05/21/13/"/>
     <updated>2016-05-21T20:18:01+08:00</updated>
     <id>http://westwind027.ml/blog/2016/05/21/13</id>
