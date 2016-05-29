@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Fullstack | Westwind027的个人学习博客]]></title>
   <link href="http://westwind027.ml/blog/categories/fullstack/atom.xml" rel="self"/>
   <link href="http://westwind027.ml/"/>
-  <updated>2016-05-29T10:26:45+08:00</updated>
+  <updated>2016-05-29T10:33:06+08:00</updated>
   <id>http://westwind027.ml/</id>
   <author>
     <name><![CDATA[westwind027]]></name>
@@ -19,7 +19,7 @@
     <updated>2016-05-29T10:16:01+08:00</updated>
     <id>http://westwind027.ml/blog/2016/05/29/16</id>
     <content type="html"><![CDATA[<pre><code>Bootstrap 
-Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web 
+Bootstrap是目前开发可根据客户端调整，移动端开发优先的HTML/CSS/JS最流行的框架
 </code></pre>
 
 <hr />
@@ -48,7 +48,7 @@ xxx.min.css和xxx.min.js都是通过工具压缩后的产出文件。减少宽�
   &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;  &lt;!-- Responsive design --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;  
     &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
 
