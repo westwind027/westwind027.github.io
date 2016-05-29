@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Fullstack | Westwind027的个人学习博客]]></title>
   <link href="http://westwind027.ml/blog/categories/fullstack/atom.xml" rel="self"/>
   <link href="http://westwind027.ml/"/>
-  <updated>2016-05-22T21:44:32+08:00</updated>
+  <updated>2016-05-29T10:26:45+08:00</updated>
   <id>http://westwind027.ml/</id>
   <author>
     <name><![CDATA[westwind027]]></name>
@@ -12,6 +12,184 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bootstrap 基本知识]]></title>
+    <link href="http://westwind027.ml/blog/2016/05/29/16/"/>
+    <updated>2016-05-29T10:16:01+08:00</updated>
+    <id>http://westwind027.ml/blog/2016/05/29/16</id>
+    <content type="html"><![CDATA[<pre><code>Bootstrap 
+Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web 
+</code></pre>
+
+<hr />
+
+<pre><code>在&lt;head&gt;里包含如下代码：（Responsive design）
+&lt;meta   charset="utf-8"&gt;    
+&lt;meta   http-equiv="X-UA-Compatible"    content="IE=edge"&gt;  
+&lt;meta   name="viewport" content="width=device-width,    initial-scale=1.0"&gt; 
+
+&lt;!-- 新 Bootstrap 核心 CSS 文件 --&gt;
+&lt;link   href="css/bootstrap.min.css"    rel="stylesheet"&gt;   
+&lt;!-- 可选的Bootstrap主题文件（一般不用引入） --&gt;
+&lt;link   href="css/bootstrap-theme.min.css"  rel="stylesheet"&gt;   
+
+在&lt;/body&gt;前增加：
+&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;
+&lt;script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;
+&lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+
+xxx.min.css和xxx.min.js都是通过工具压缩后的产出文件。减少宽带的压力
+
+例如：
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;  &lt;!-- Responsive design --&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+
+    &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
+    &lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
+    &lt;!--[if lt IE 9]&gt;
+      &lt;script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+    &lt;script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>&lt;div  class="container"&gt;    包裹所有内容,固定宽度
+&lt;div    class=“row”&gt;        将网页分为多个行
+&lt;div    class=“jumbotron”&gt;  展示关键内容，扩展宽度到浏览器宽度
+</code></pre>
+
+<hr />
+
+<pre><code>Grid System
+每个row分成12个column
+.col-xs-  extra small   Mobile phones
+.col-sm-  small Tablets 
+.col-md-  mediumLaptops
+.col-lg-  large Desktops
+
+offset 偏移
+push   左-&gt;右
+pull   右-&gt;左
+
+嵌套以&lt;div class="row"&gt;包裹
+</code></pre>
+
+<hr />
+
+<!--Fluid images-->
+
+
+<pre><code>Media Query
+viewport 确保屏幕宽度设为设备宽度
+</code></pre>
+
+<hr />
+
+<pre><code>Navbar
+例如：
+&lt;nav class="navbar navbar-default" role="navigation"&gt;       使用导航条
+  &lt;div class="container"&gt;   
+    &lt;ul class="nav navbar-nav"&gt;                             以列表来存放导航条内容
+      &lt;li   class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;    
+      &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;    
+      &lt;li&gt;&lt;a href="#"&gt;Menu&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;  
+    &lt;/ul&gt;   
+  &lt;/div&gt;    
+&lt;/nav&gt;  
+
+导航条左侧加商标
+&lt;div class="navbar-header"&gt; 
+  &lt;a class="navbar-brand"   href="#"&gt;Ristorante Con Fusion&lt;/a&gt;  
+&lt;/div&gt;  
+导航条右侧增加
+&lt;ul class="nav navbar-nav   navbar-right"&gt;  
+
+使用按钮缩放，要放到navbar-header里面，navbar-brand前面
+&lt;button type="button"   class="navbar-toggle collapsed"     
+data-toggle="collapse"  data-target="#navbar"   aria-expanded="false"   aria-controls="navbar"&gt; 
+  &lt;span class="sr-only"&gt;Toggle  navigation&lt;/span&gt;   
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+&lt;/button&gt;   
+下面的导航条内容需要使用上面指定的id
+&lt;div    id="navbar" class="navbar-collapse collapse"&gt;   
+  &lt;ul   class="nav navbar-nav”&gt;   .   .   .   &lt;/ul&gt;   
+&lt;/div&gt;  
+
+navbar-inverse使用暗色导航条
+navbar-fixed-top  固定在窗口的顶端
+</code></pre>
+
+<hr />
+
+<pre><code>增加下拉选项
+&lt;li class="dropdown"&gt;
+  &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"
+   role="button" aria-haspopup="true" aria-expanded="false"&gt;
+   Menu &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Appetizers&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Main Courses&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Desserts&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Drinks&lt;/a&gt;&lt;/li&gt;
+      &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+      &lt;li class="dropdown-header"&gt;Specials&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Lunch Buffet&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Weekend Brunch&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>字体图标：
+使用Glyphicons Halflings图标（Bootstrap自带）
+&lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>Font Awesome:http://fontawesome.dashgame.com/
+&lt;link href="css/font-awesome.min.css" rel="stylesheet"&gt;
+
+&lt;i class="fa fa-phone"&gt;&lt;/i&gt;: +852 1234 5678&lt;br&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>使用bootstrap-social图标（依赖bootstrap和font awesome）
+&lt;link href="css/bootstrap-social.css" rel="stylesheet"&gt;
+
+&lt;a class="btn btn-social-icon btn-twitter"&gt;
+&lt;span class="fa fa-twitter"&gt;&lt;/span&gt;
+&lt;/a&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript基本知识(续)]]></title>

@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 基本知识 - Westwind027的个人学习博客</title>
+  <meta name="author" content="westwind027">
+
+  
+  <meta name="description" content="Bootstrap Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web 在&lt;head&gt;里包含如下代码 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://westwind027.ml/blog/2016/05/29/16/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Westwind027的个人学习博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-72538682-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'http://droidyue-tools.qiniudn.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Westwind027的个人学习博客</a></h1>
+  
+    <h2>Come、Study、Conquer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="westwind027.ml">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Bootstrap 基本知识</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-29T10:16:01+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:16 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><pre><code>Bootstrap 
+Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web 
+</code></pre>
+
+<hr />
+
+<pre><code>在&lt;head&gt;里包含如下代码：（Responsive design）
+&lt;meta   charset="utf-8"&gt;    
+&lt;meta   http-equiv="X-UA-Compatible"    content="IE=edge"&gt;  
+&lt;meta   name="viewport" content="width=device-width,    initial-scale=1.0"&gt; 
+
+&lt;!-- 新 Bootstrap 核心 CSS 文件 --&gt;
+&lt;link   href="css/bootstrap.min.css"    rel="stylesheet"&gt;   
+&lt;!-- 可选的Bootstrap主题文件（一般不用引入） --&gt;
+&lt;link   href="css/bootstrap-theme.min.css"  rel="stylesheet"&gt;   
+
+在&lt;/body&gt;前增加：
+&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;
+&lt;script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;
+&lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+
+xxx.min.css和xxx.min.js都是通过工具压缩后的产出文件。减少宽带的压力
+
+例如：
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;  &lt;!-- Responsive design --&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+
+    &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
+    &lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
+    &lt;!--[if lt IE 9]&gt;
+      &lt;script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+    &lt;script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>&lt;div  class="container"&gt;    包裹所有内容,固定宽度
+&lt;div    class=“row”&gt;        将网页分为多个行
+&lt;div    class=“jumbotron”&gt;  展示关键内容，扩展宽度到浏览器宽度
+</code></pre>
+
+<hr />
+
+<pre><code>Grid System
+每个row分成12个column
+.col-xs-  extra small   Mobile phones
+.col-sm-  small Tablets 
+.col-md-  mediumLaptops
+.col-lg-  large Desktops
+
+offset 偏移
+push   左-&gt;右
+pull   右-&gt;左
+
+嵌套以&lt;div class="row"&gt;包裹
+</code></pre>
+
+<hr />
+
+<!--Fluid images-->
+
+
+<pre><code>Media Query
+viewport 确保屏幕宽度设为设备宽度
+</code></pre>
+
+<hr />
+
+<pre><code>Navbar
+例如：
+&lt;nav class="navbar navbar-default" role="navigation"&gt;       使用导航条
+  &lt;div class="container"&gt;   
+    &lt;ul class="nav navbar-nav"&gt;                             以列表来存放导航条内容
+      &lt;li   class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;    
+      &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;    
+      &lt;li&gt;&lt;a href="#"&gt;Menu&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;  
+    &lt;/ul&gt;   
+  &lt;/div&gt;    
+&lt;/nav&gt;  
+
+导航条左侧加商标
+&lt;div class="navbar-header"&gt; 
+  &lt;a class="navbar-brand"   href="#"&gt;Ristorante Con Fusion&lt;/a&gt;  
+&lt;/div&gt;  
+导航条右侧增加
+&lt;ul class="nav navbar-nav   navbar-right"&gt;  
+
+使用按钮缩放，要放到navbar-header里面，navbar-brand前面
+&lt;button type="button"   class="navbar-toggle collapsed"     
+data-toggle="collapse"  data-target="#navbar"   aria-expanded="false"   aria-controls="navbar"&gt; 
+  &lt;span class="sr-only"&gt;Toggle  navigation&lt;/span&gt;   
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+  &lt;span class="icon-bar"&gt;&lt;/span&gt;    
+&lt;/button&gt;   
+下面的导航条内容需要使用上面指定的id
+&lt;div    id="navbar" class="navbar-collapse collapse"&gt;   
+  &lt;ul   class="nav navbar-nav”&gt;   .   .   .   &lt;/ul&gt;   
+&lt;/div&gt;  
+
+navbar-inverse使用暗色导航条
+navbar-fixed-top  固定在窗口的顶端
+</code></pre>
+
+<hr />
+
+<pre><code>增加下拉选项
+&lt;li class="dropdown"&gt;
+  &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"
+   role="button" aria-haspopup="true" aria-expanded="false"&gt;
+   Menu &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Appetizers&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Main Courses&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Desserts&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Drinks&lt;/a&gt;&lt;/li&gt;
+      &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+      &lt;li class="dropdown-header"&gt;Specials&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Lunch Buffet&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Weekend Brunch&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>字体图标：
+使用Glyphicons Halflings图标（Bootstrap自带）
+&lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>Font Awesome:http://fontawesome.dashgame.com/
+&lt;link href="css/font-awesome.min.css" rel="stylesheet"&gt;
+
+&lt;i class="fa fa-phone"&gt;&lt;/i&gt;: +852 1234 5678&lt;br&gt;
+</code></pre>
+
+<hr />
+
+<pre><code>使用bootstrap-social图标（依赖bootstrap和font awesome）
+&lt;link href="css/bootstrap-social.css" rel="stylesheet"&gt;
+
+&lt;a class="btn btn-social-icon btn-twitter"&gt;
+&lt;span class="fa fa-twitter"&gt;&lt;/span&gt;
+&lt;/a&gt;
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">westwind027</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-05-29T10:16:01+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:16 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/fullstack/'>fullstack</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share?uid=2081780" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2081780" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2081780"></script>
+<!-- UY END -->
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/05/22/15/" title="Previous Post: JavaScript基本知识(续)">&laquo; JavaScript基本知识(续)</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>关于作者</h1>
+  <p>84年生人，通讯行业从业者，爱好广泛</p>
+  <p>联系方式：westwind027@gmail.com</p>
+</section><section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    
+      <li class="category">
+        <a><a class='category' href='/blog/categories/gotour/'>gotour</a> (12)</a>
+      </li>
+    
+      <li class="category">
+        <a><a class='category' href='/blog/categories/openresty/'>openresty</a> (1)</a>
+      </li>
+    
+      <li class="category">
+        <a><a class='category' href='/blog/categories/lua/'>lua</a> (1)</a>
+      </li>
+    
+      <li class="category">
+        <a><a class='category' href='/blog/categories/fullstack/'>fullstack</a> (4)</a>
+      </li>
+    
+  </ul>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/05/29/16/">Bootstrap 基本知识</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/22/15/">JavaScript基本知识(续)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/22/14/">JavaScript基本知识</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/21/13/">Html基本知识</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/24/12/">OpenResty学习-Lua部分</a>
+      </li>
+    
+  </ul>
+</section>
+<!-- UYAN NEW COMMENT BEGIN -->
+<div id="uyan_newcmt_unit"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2081780"></script> <!-- 如果已经过加载此行JS，即可不用重复加载 -->
+<!-- UYAN NEW COMMENT END --><!-- UYAN HOT COMMENT BEGIN -->
+<div id="uyan_hotcmt_unit"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2081780"></script> <!-- 如果已经过加载此行JS，即可不用重复加载 -->
+<!-- UYAN HOT COMMENT END -->
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - westwind027 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
